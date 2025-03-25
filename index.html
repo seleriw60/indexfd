@@ -1,46 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Votre Devis Prêt</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devis Prêt - VFoodTruck</title>
     <style>
-        body { 
-            font-family: Arial; 
-            text-align: center; 
-            padding: 40px; 
-            background: #f8f8f8;
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FF6B00; /* Orange VFoodTruck */
+            margin: 0;
+            padding: 0;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
+        
         .container {
-            background: white;
-            max-width: 500px;
-            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            color: #333;
         }
+        
+        .hamburger-emoji {
+            font-size: 2rem;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            cursor: pointer;
+        }
+        
+        h1 {
+            color: #FF6B00;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+        
         .btn {
             display: inline-block;
-            background: #FF6B00;
-            color: white !important;
-            padding: 12px 25px;
+            background-color: #FF6B00;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
             text-decoration: none;
-            border-radius: 5px;
             font-weight: bold;
-            margin-top: 20px;
+            margin: 20px 0;
+            transition: all 0.3s;
+            border: 2px solid #FF6B00;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            color: #FF6B00;
+        }
+        
+        .countdown {
+            font-size: 18px;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Devis disponible</h1>
-        <p>Votre estimation est prête :</p>
-        <a href="https://vfoodtruck.com" class="btn">Lire mon devis</a>
-        <p><small>Redirection automatique dans 5 secondes...</small></p>
+        <div class="hamburger-emoji" onclick="alert('Devis disponible!')">🍔</div>
+        <h1>Votre commande est prête !</h1>
+        <p>Merci d'avoir choisi VFoodTruck. Bon appétit !</p>
+        
+        <a href="https://vfoodtruck.com" class="btn">Voir mon devis</a>
+        
+        <p class="countdown">Redirection automatique dans <span id="countdown">5</span> secondes...</p>
     </div>
+
     <script>
-        setTimeout(() => {
-            window.location.href = "https://vfoodtruck.com";
-        }, 5000);
+        // Redirection automatique
+        let countdown = 5;
+        const countdownElement = document.getElementById("countdown");
+        
+        const timer = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            
+            if(countdown <= 0) {
+                clearInterval(timer);
+                window.location.href = "https://vfoodtruck.com";
+            }
+        }, 1000);
     </script>
 </body>
 </html>
